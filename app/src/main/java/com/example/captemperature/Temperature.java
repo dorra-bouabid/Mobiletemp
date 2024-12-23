@@ -1,34 +1,27 @@
 package com.example.captemperature;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Temperature {
-    private Long id;          // Identifiant unique
-    private float value;      // Valeur de la température
-    private String timestamp; // Horodatage de la température
+    private float value;
+    private String dateTime;
 
-    // Getter et Setter pour `id`
-    public Long getId() {
-        return id;
+    // Constructeur
+    public Temperature(float value, long timestamp) {
+        this.value = value;
+
+        // Convertir le timestamp en millisecondes vers une date formatée
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        this.dateTime = sdf.format(new Date(timestamp));
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    // Getter et Setter pour `value`
     public float getValue() {
         return value;
     }
 
-    public void setValue(float value) {
-        this.value = value;
-    }
-
-    // Getter et Setter pour `timestamp`
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public String getDateTime() {
+        return dateTime;
     }
 }

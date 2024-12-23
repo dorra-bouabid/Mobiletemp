@@ -1,5 +1,6 @@
 package com.example.captemperature;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SQLiteHelper extends SQLiteOpenHelper {
+class SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "temperatureDB";
     private static final int DATABASE_VERSION = 1;
@@ -56,7 +57,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_TEMPERATURE, new String[]{COLUMN_TEMP_VALUE}, null, null, null, null, COLUMN_TIMESTAMP + " DESC", "1");
 
         if (cursor != null && cursor.moveToFirst()) {
-            float temperature = cursor.getFloat(cursor.getColumnIndex(COLUMN_TEMP_VALUE));
+            @SuppressLint("Range") float temperature = cursor.getFloat(cursor.getColumnIndex(COLUMN_TEMP_VALUE));
             cursor.close();
             return temperature;
         } else {

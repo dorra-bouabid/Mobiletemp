@@ -7,8 +7,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface TemperatureApi {
-
-    // Change the method to accept the TemperatureRequest class
-    @POST("/temperature/save")
-    Call<Void> saveTemperature(@Body TemperatureRequest temperatureRequest);  // Correct type here
+    @POST("/saveTemperature")
+    Call<Void> saveTemperature(@Body TemperatureRequest temperatureRequest);
 }
